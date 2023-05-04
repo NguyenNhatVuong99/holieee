@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="parent" placeholder="parent">
+    <input type="text" id="child" placeholder="child">
+    <button id="btn">Click</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@google-cloud/text-to-speech"></script>
+
+
+    <script>
+        const client = new google.cloud.textToSpeech.TextToSpeechClient();
+
+        async function synthesizeText(text) {
+            const request = {
+                input: {
+                    text: text
+                },
+                voice: {
+                    languageCode: 'vi-VN',
+                    ssmlGender: 'FEMALE'
+                },
+                audioConfig: {
+                    audioEncoding: 'MP3'
+                },
+            };
+            const [response] = await client.synthesizeSpeech(request);
+            return response.audioContent;
+        }
+        const audioContent = synthesizeText('Xin chào, đây là giọng nói được tạo ra bằng Google Cloud Text-to-Speech API.');
+    </script>
+</body>
+
+</html>
