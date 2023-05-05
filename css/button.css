@@ -20,7 +20,7 @@
     border: solid 3px #000;
     border-radius: 40px;
     background: var(--main_color);
-    font-family: 'Fredoka One', cursive;
+    /* font-family: 'Fredoka One', cursive; */
     cursor: pointer;
 }
 

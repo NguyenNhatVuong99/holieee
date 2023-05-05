@@ -57,7 +57,7 @@ let data = [{
         "id": "2",
         "title": "THÔNG BÁO PHỤ HUYNH TÌM BÉ",
         "summary": "Tìm bé",
-        "content": "Kính thưa quý khách và các bé thân mến, Công viên nước hô ly e xin thông báo. Hiện nay, @parent đang tìm @child. Vậy @child đang ở đâu, vui lòng ghé khu vực cổng. Chúng tôi xin được phép nhắc lại: Hiện nay, @parent đang tìm @child. Vậy @child đang ở đâu, vui lòng ghé khu vực cổng. Xin chân thành cảm ơn.",
+        "content": "Kính thưa quý khách và các bé thân mến, Công viên nước hô ly e xin thông báo, Hiện nay, @parent đang tìm @child, Vậy @child đang ở đâu, vui lòng ghé khu vực cổng. Chúng tôi xin được phép nhắc lại: Hiện nay, @parent đang tìm @child, Vậy @child đang ở đâu, vui lòng ghé khu vực cổng, Xin chân thành cảm ơn.",
         "hasInput": true
     }
 
@@ -155,14 +155,17 @@ function speaker(id) {
 
 function speakNextSentence(index, sentences) {
     if (index < sentences.length) {
+
         responsiveVoice.speak(sentences[index], "Vietnamese Female", {
             rate: 1.2,
             onend: () => {
                 index++;
                 setTimeout(() => {
                     speakNextSentence(index, sentences);
-                }, 1)
+                }, 100)
             }
         });
+
+
     }
 }
