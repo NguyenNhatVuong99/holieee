@@ -46,17 +46,34 @@ $('.geekstudios, .scroll-2').mouseenter(function() {
 $('.geekstudios, .scroll-2').mouseleave(function() {
     $('.hipster').removeClass('show');
 });
-readFile()
+let data = [{
+            "id": "1",
+            "title": "THÔNG BÁO CHÀO MỪNG",
+            "summary": "Chào mừng",
+            "hasInput": false,
+            "audio": "./audio/chao-mung.mp3"
+        },
+        {
+            "id": "2",
+            "title": "THÔNG BÁO PHỤ HUYNH TÌM BÉ",
+            "summary": "Tìm bé",
+            "content": "Kính thưa quý khách và các bé thân mến, Công viên nước hô ly e xin thông báo. Hiện nay, @parent đang tìm @child. Vậy @child đang ở đâu, vui lòng ghé khu vực cổng. Chúng tôi xin được phép nhắc lại: Hiện nay, @parent đang tìm @child. Vậy @child đang ở đâu, vui lòng ghé khu vực cổng. Xin chân thành cảm ơn.",
+            "hasInput": true
+        }
 
-function readFile() {
-    axios.get('/data/notification.json')
-        .then(response => {
-            showSection(response.data)
-        })
-        .catch(error => console.log(error));
-}
+    ]
+    // readFile()
 
-function showSection(data) {
+// function readFile() {
+//     axios.get('/data/notification.json')
+//         .then(response => {
+//             showSection(response.data)
+//         })
+//         .catch(error => console.log(error));
+// }
+showSection()
+
+function showSection() {
     let content = ""
     data.forEach(item => {
         content += `<section class="section-${item.id}" id="section-${item.id}">
